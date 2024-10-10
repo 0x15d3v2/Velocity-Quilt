@@ -744,7 +744,7 @@ public class ConnectedPlayer implements MinecraftConnectionAssociation, Player, 
     if (kickedFromCurrent) {
       Optional<RegisteredServer> next = getNextServerToTry(rs);
       result =
-          next.map(RedirectPlayer::create).orElseGet(() -> DisconnectPlayer.create(friendlyReason));
+          DisconnectPlayer.create(friendlyReason);
     } else {
       // If we were kicked by going to another server, the connection should not be in flight
       if (connectionInFlight != null && connectionInFlight.getServer().equals(rs)) {
